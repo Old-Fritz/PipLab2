@@ -141,6 +141,12 @@ function drawAxises(canvas)
 }
 
 function clickCanvas(event) {
+    if(!isRSet)
+    {
+        alert("Невозможно определить точку! Укажите R!");
+        return;
+    }
+
     let canvas = document.querySelector("canvas");
     var rect = canvas.getBoundingClientRect();
 
@@ -155,6 +161,20 @@ function clickCanvas(event) {
 
     x = x*12/canvas.width-6;
     y= 6-y*12/canvas.height;
-    addPoint(x, y);
-    draw();
+    sendPost(x,y,R);
+}
+
+function sendPost(x,y,r) {
+    let xhr = new XMLHttpRequest();
+
+    let body = "xParam=" +encodeURIComponent(x) +
+        "&yParam=" +encodeURIComponent(y) +
+        "&rParam=" +encodeURIComponent(r);
+
+    xhr.open("POST","Controller", true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        location.reload();
+    };
+    xhr.send(body);
 }

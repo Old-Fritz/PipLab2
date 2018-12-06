@@ -33,7 +33,7 @@
         <tbody>
         <tr>
             <td td>
-                <form id = "mainForm" method="POST" action="AreaCheck">
+                <form id = "mainForm" method="POST" action="Controller">
                     <fieldset>
                         <table>
                             <tr>
