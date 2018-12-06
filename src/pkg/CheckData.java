@@ -1,14 +1,11 @@
 package pkg;
 
-import javax.ejb.Local;
-import javax.ejb.Remote;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Singleton(mappedName = "checkData")
+@Singleton
 public class CheckData {
     private List<DataRow> rows;
     private static CheckData instance;
@@ -19,17 +16,13 @@ public class CheckData {
         rows = new ArrayList<DataRow>();
     }
 
-    public void addRow(double xParam, double yParam, double rParam, boolean result, long time, Date date, double xMouse, double yMouse)
+    public void addRow(double xParam, double yParam, double rParam, boolean result, long time, Date date)
     {
-        rows.add(new DataRow(xParam, yParam, rParam, result, time, date, xMouse, yMouse));
+        rows.add(new DataRow(xParam, yParam, rParam, result, time, date));
     }
 
     public List<DataRow> getRows() {
         return rows;
-    }
-
-    public void setRows(List<DataRow> rows) {
-        this.rows = rows;
     }
 
     public static CheckData getInstance()

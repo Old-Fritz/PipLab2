@@ -32,7 +32,7 @@
     <table>
         <tbody>
         <tr>
-            <td colspan="2" td>
+            <td td>
                 <form id = "mainForm" method="POST" action="AreaCheck">
                     <fieldset>
                         <table>
@@ -90,27 +90,27 @@
                                     <table  class="paramTable">
                                         <tr>
                                             <td>
-                                                <label><input class="radioSel" type="radio" name="rParam" value="1.0" required>1.0</label>
+                                                <label><input class="radioSel" type="radio" name="rParam" value="1.0"  onchange="R = 1;isRSet = true; draw();" required>1.0</label>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label><input class="radioSel" type="radio" name="rParam" value="2.0" required>2.0</label>
+                                                <label><input class="radioSel" type="radio" name="rParam" value="2.0"  onchange="R = 2;isRSet = true; draw();" required>2.0</label>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label><input class="radioSel" type="radio" name="rParam" value="3.0" required>3.0</label>
+                                                <label><input class="radioSel" type="radio" name="rParam" value="3.0"  onchange="R = 3;isRSet = true; draw();" required>3.0</label>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label><input class="radioSel" type="radio" name="rParam" value="4.0" required>4.0</label>
+                                                <label><input class="radioSel" type="radio" name="rParam" value="4.0"  onchange="R = 4;isRSet = true; draw();" required>4.0</label>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label><input class="radioSel" type="radio" name="rParam" value="5.0" required>5.0</label>
+                                                <label><input class="radioSel" type="radio" name="rParam" value="5.0"  onchange="R = 5; isRSet = true; draw();" required>5.0</label>
                                             </td>
                                         </tr>
                                     </table>
@@ -131,7 +131,11 @@
                 </form>
             </td>
             <td>
-                <img id="areasImage" src="./files/areas.png" title="График области" alt="Не удалось загрузить график">
+                <canvas width = 500 height = 500></canvas>
+                <script>
+                    canvas = document.querySelector("canvas");
+                    canvas.addEventListener('mouseup', clickCanvas, false);
+                </script>
             </td>
         </tr>
         <tr>
@@ -141,6 +145,7 @@
         </tr>
         </tbody>
     </table>
+
     <h1>Результаты</h1>
     <table id = "resultTable">
         <thead>
@@ -148,17 +153,18 @@
             <th>Параметр X</th>
             <th>Параметр Y</th>
             <th>Параметр R</th>
-            <th>Координата клика X</th>
-            <th>Координата клика Y</th>
             <th>Результат</th>
             <th>Время работы скрипта</th>
             <th>Время</th>
         </tr>
         </thead>
         <tbody>
+        <script>pointsArray.splice(0,pointsArray.length)</script>
         <%for(DataRow row :CheckData.getInstance().getRows()){%>
             <%= row.toRow()%>
+        <script>addPoint(<%=row.getX() + ", " + row.getY()%>); R=<%=row.getR()%></script>
         <%}%>
+        <script>draw()</script>
         </tbody>
     </table>
 </article>

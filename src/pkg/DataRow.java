@@ -10,19 +10,14 @@ public class DataRow{
     long time;
     Date date;
 
-    double xMouse;
-    double yMouse;
 
-
-    public DataRow(double xParam, double yParam, double rParam, boolean result, long time, Date date, double xMouse, double yMouse) {
+    public DataRow(double xParam, double yParam, double rParam, boolean result, long time, Date date) {
         this.xParam = xParam;
         this.yParam = yParam;
         this.rParam = rParam;
         this.result = result;
         this.time = time;
         this.date = date;
-        this.xMouse = xMouse;
-        this.yMouse = yMouse;
     }
 
     public String toRow()
@@ -32,8 +27,6 @@ public class DataRow{
         row+= "<td>" + xParam + "</td>";
         row+= "<td>" + yParam + "</td>";
         row+= "<td>" + rParam + "</td>";
-        row+= "<td>" + xMouse + "</td>";
-        row+= "<td>" + yMouse + "</td>";
         if(result)
             row+= "<td>true</td>";
         else
@@ -43,5 +36,20 @@ public class DataRow{
         row += "</tr>\n";
 
         return row;
+    }
+
+    public double getX()
+    {
+        return xParam;
+    }
+
+    public double getY()
+    {
+        return yParam;
+    }
+
+    public double getR()
+    {
+        return rParam;
     }
 }

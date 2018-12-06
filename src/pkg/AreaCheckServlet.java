@@ -31,25 +31,12 @@ public class AreaCheckServlet extends HttpServlet {
         double yParam = Double.parseDouble(req.getParameter("yParam"));
         double rParam = Double.parseDouble(req.getParameter("rParam"));
 
-        double xMouse, yMouse;
-        String xMouseStr = req.getParameter("xMouse");
-        if(xMouseStr == null)
-            xMouse = -1;
-        else
-            xMouse = Double.parseDouble(xMouseStr);
-
-        String yMouseStr = req.getParameter("yMouse");
-        if(yMouseStr == null)
-            yMouse = -1;
-        else
-            yMouse = Double.parseDouble(yMouseStr);
-
 
         boolean result = checkArea(xParam, yParam, rParam);
 
         time = System.currentTimeMillis() - time;
 
-        checkData.addRow(xParam,yParam,rParam,result,time,new Date(),xMouse,yMouse);
+        checkData.addRow(xParam,yParam,rParam,result,time,new Date());
 
         req.getRequestDispatcher("index.jsp").forward(req,resp);
     }
