@@ -146,27 +146,11 @@
         </tbody>
     </table>
 
-    <h1>Результаты</h1>
-    <table id = "resultTable">
-        <thead>
-        <tr>
-            <th>Параметр X</th>
-            <th>Параметр Y</th>
-            <th>Параметр R</th>
-            <th>Результат</th>
-            <th>Время работы скрипта</th>
-            <th>Время</th>
-        </tr>
-        </thead>
-        <tbody>
-        <script>pointsArray.splice(0,pointsArray.length)</script>
-        <%for(DataRow row :checkData.getRows()){%>
-            <%= row.toRow()%>
-        <script>addPoint(<%=row.getX() + ", " + row.getY()%>); R=<%=row.getR()%></script>
-        <%}%>
-        <script>draw()</script>
-        </tbody>
-    </table>
+    <script>pointsArray.splice(0,pointsArray.length)</script>
+    <%for(DataRow row :checkData.getRows()){%>
+    <script>addPoint(<%=row.getX() + ", " + row.getY()%>); R=<%=row.getR()%></script>
+    <%}%>
+    <script>draw()</script>
 </article>
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Writer;
 
 @WebServlet(name = "Controller", urlPatterns = {"/Controller"})
 public class ControllerServlet  extends HttpServlet {
@@ -25,6 +26,8 @@ public class ControllerServlet  extends HttpServlet {
             req.getRequestDispatcher("jsp.jsp").forward(req,resp);
             return;
         }
+
         req.getRequestDispatcher("AreaCheck").forward(req,resp);
     }
+
 }

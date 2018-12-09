@@ -173,8 +173,8 @@ function sendPost(x,y,r) {
 
     xhr.open("POST","Controller", true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        location.reload();
+    xhr.onload = function() {
+        document.documentElement.innerHTML=xhr.responseText;
     };
     xhr.send(body);
 }
