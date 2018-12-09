@@ -8,11 +8,9 @@ import java.util.List;
 @Singleton
 public class CheckData {
     private List<DataRow> rows;
-    private static CheckData instance;
 
     public CheckData()
     {
-        instance = this;
         rows = new ArrayList<DataRow>();
     }
 
@@ -25,10 +23,6 @@ public class CheckData {
         return rows;
     }
 
-    public static CheckData getInstance()
-    {
-        return instance;
-    }
 }
 
 

@@ -19,13 +19,7 @@ public class AreaCheckServlet extends HttpServlet {
     CheckData checkData;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long time = System.currentTimeMillis();
         double xParam = Double.parseDouble(req.getParameter("xParam"));
         double yParam = Double.parseDouble(req.getParameter("yParam"));
@@ -38,7 +32,7 @@ public class AreaCheckServlet extends HttpServlet {
 
         checkData.addRow(xParam,yParam,rParam,result,time,new Date());
 
-        req.getRequestDispatcher("index.jsp").forward(req,resp);
+        resp.sendRedirect("Controller");
     }
 
     private boolean checkArea(double x, double y, double r)

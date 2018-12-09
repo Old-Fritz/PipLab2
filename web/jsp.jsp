@@ -2,12 +2,12 @@
 <%@ page import="javax.ejb.EJB" %>
 <%@ page import="pkg.CheckData" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<jsp:useBean id="checkData" type="pkg.CheckData" scope="request"/>
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>ЛР2</title>
-    <link rel="stylesheet" type="text/css" href="./files/style.css">
-    <script type="text/javascript" language="text/javascript" src="./files/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="files/style.css">
+    <script type="text/javascript" language="text/javascript" src="files/script.js"></script>
 </head>
 <body>
 <header>
@@ -160,7 +160,7 @@
         </thead>
         <tbody>
         <script>pointsArray.splice(0,pointsArray.length)</script>
-        <%for(DataRow row :CheckData.getInstance().getRows()){%>
+        <%for(DataRow row :checkData.getRows()){%>
             <%= row.toRow()%>
         <script>addPoint(<%=row.getX() + ", " + row.getY()%>); R=<%=row.getR()%></script>
         <%}%>
